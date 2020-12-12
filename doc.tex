@@ -1,0 +1,153 @@
+\documentclass[12pt]{article}
+
+
+
+\usepackage[ngerman]{babel}
+\usepackage{enumitem, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\newlist{checklist}{itemize}{2}
+\setlist[checklist]{label=$\square$}
+
+\usepackage{titling}
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    \vskip0.5em}%
+}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\geometry{
+  a4paper,
+  left=33mm,
+  right=33mm,
+  top=20mm
+}
+
+\definecolor{mordantred19}{rgb}{0.68, 0.05, 0.0}
+
+\newcommand{\solution}{\textcolor{mordantred19}{Solution:}}
+
+\let\oldemph\emph
+\renewcommand{\emph}[1]{\textbf{\oldemph{#1}}}
+
+%\let\oldsection\section
+%\renewcommand{\section}[1]{
+%  \begin{center}
+%  \oldsection{#1}
+%  \hrule
+%  \end{center}
+%}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\schritt}[3]{
+\begin{tcolorbox}
+  \textbf{Schritt #1: #2}
+\end{tcolorbox}
+#3
+}
+
+
+\title{Malroboter mit dem Raspberry Pi}
+\subtitle{Filmbüro Wismar}
+\author{Richard Grünert und Josefine Richey}
+\date{12/2020}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\pagebreak
+
+\section{Kurzbeschreibung}
+Diese Anleitung dient dem Aufbau sowie dem Einsatz eines einfachen Roboters in einem KURSKURSKURS. Bei diesem Roboter werden zwei Motoren mithilfe eines \emph{Raspberry-Pi}-Einplatinencomputers angesteuert, um einen Stift über ein  Papierblatt zu bewegen. Die Geschwindigkeit beider Motoren kann dabei durch einfache Programmierbefehle eingestellt werden.\\
+
+\subsection{Ziel}
+Das Projekt soll den Kursteilnehmern die Möglichkeiten der Programmierung einfacher Elektronik nahebringen.
+
+\section{Vorbereitung}
+Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbaus im Vornherein erledigt werden, z.B. die Verdrahtung der Motoren (später beschrieben).\\
+
+\subsection{Materialien}
+
+\subsubsection{Werkzeuge}
+\begin{checklist}
+    \item Heißklebepistole
+    \item Schere
+\end{checklist}
+
+\subsubsection{Material}
+\begin{checklist}
+    \item RaspberryPi
+    \item Zahnstocher
+    \item Motoren
+    \item Treiber
+    \item Pappe
+    \item Kabel
+    \item Räder
+    \item Klammern
+    \item Unterlage (Telefonbuch / Karton)
+\end{checklist}
+
+
+\subsection{Software}
+Auf dem RaspberryPi sollte bereits ein funktionierendes \emph{Betriebssystem} installiert sein. Es bietet sich \emph{Raspberry Pi OS} (Raspbian) an. \\
+
+Bei dem ursprünglichen Projekt wurde die Programmierumgebung \emph{Scratch} verwendet. Da diese die Ansteuerung von Motoren mit dem Raspberry Pi jedoch unnötig kompliziert macht, wurde hier auf die Verwendung der Programmiersprache \emph{Python} ausgewichen. Python bietet zwar keine grafische Programmieroberfläche (wie Scratch), ist jedoch, nach Meinung der Autoren, eine für alle Altersgruppen intuitive und mindestens genauso zugängliche Programmiermethode wie Scratch.\\
+
+Vorkenntnisse über Python sind nicht zwingend notwendig!
+
+\subsubsection{Script}
+Zur Vorbereitung sollten einige Funktionalitäten innerhalb von Python eingebaut werden, welche die Verwendung bei der Kursdurchführung für die Kursteilnehmer erleichtern. Die Nachfolgenden Programme sollten vorbereitet werden.\\
+
+\schritt{1}{Legen Sie einen Projektordner an}{
+
+  Legen Sie auf dem Desktop des Raspberry Pi einen neuen Ordner an und nennen Sie ihn \emph{Malroboter} (sofern nicht bereits vorhanden).\\
+
+}
+
+\schritt{2}{Erstellen Sie eine neue Datei}{
+
+  Erstellen Sie im Ordner Malroboter eine neue Datei \emph{motorsteuerung.py} (sofern nicht bereits vorhanden).\\
+
+}
+
+\schritt{3}{Fügen Sie den folgenden}{2}
+
+
+\schritt{4}{Einbinden des Programms}{3}
+
+
+\section{Durchführung}
+
+\subsection{Bau des Roboterarmes}
+
+\subsection{Verbindung mit RaspberryPi}
+
+\subsubsection{Verbindung Motor mit Treiber}
+\subsubsection{Verbindung Treiber mit RaspberryPi}
+
+\subsection{Programmierung}
+\subsection{Programm A (Beispiel)}
+\subsection{Programm B}
+
+
+\section{Projektvariation}
+je nach Altersklasse
+
+
+\end{document}
