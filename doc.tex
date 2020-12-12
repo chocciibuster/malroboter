@@ -1,12 +1,16 @@
 \documentclass[12pt]{article}
 
 
-
 \usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+
 \usepackage{enumitem, amssymb}
 \usepackage{geometry}
 \usepackage{xcolor}
 \usepackage{tcolorbox}
+\usepackage{listings}
+\usepackage[scaled=1]{inconsolata}
+\usepackage[T1]{fontenc}
 
 \newlist{checklist}{itemize}{2}
 \setlist[checklist]{label=$\square$}
@@ -19,13 +23,45 @@
     \vskip0.5em}%
 }
 
+\definecolor{commentColor}{HTML}{adb5bd}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{stringColor}{HTML}{7048e8}
+\definecolor{keywordColor}{HTML}{228be6}
+\definecolor{backgroundColor}{HTML}{f8f9fa}
+\definecolor{borderColor}{HTML}{f1f3f5}
+\definecolor{inlineTextColor}{HTML}{495057}
+\definecolor{linkcolor}{HTML}{228be6}
+
+\lstset{
+  backgroundcolor=\color{backgroundColor},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\ttfamily,        % the size of the fonts that are used for the code
+  breaklines=true,                 % sets automatic line breaking
+  commentstyle=\color{commentColor},    % comment style
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1000,                % start line enumeration with line 1000
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{keywordColor}\textbf,       % keyword style
+  language=Python,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{borderColor},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{stringColor},     % string literal style
+  tabsize=2
+}
+
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
     citecolor=black,
     filecolor=black,
-    linkcolor=black,
-    urlcolor=black
+    linkcolor=commentColor,
+    urlcolor=linkcolor
 }
 
 \geometry{
@@ -38,6 +74,8 @@
 \definecolor{mordantred19}{rgb}{0.68, 0.05, 0.0}
 
 \newcommand{\solution}{\textcolor{mordantred19}{Solution:}}
+
+\newcommand{\hinweis}{\textcolor{stringColor}{! Hinweis: }}
 
 \let\oldemph\emph
 \renewcommand{\emph}[1]{\textbf{\oldemph{#1}}}
@@ -74,7 +112,9 @@
 \pagebreak
 
 \section{Kurzbeschreibung}
-Diese Anleitung dient dem Aufbau sowie dem Einsatz eines einfachen Roboters in einem KURSKURSKURS. Bei diesem Roboter werden zwei Motoren mithilfe eines \emph{Raspberry-Pi}-Einplatinencomputers angesteuert, um einen Stift über ein  Papierblatt zu bewegen. Die Geschwindigkeit beider Motoren kann dabei durch einfache Programmierbefehle eingestellt werden.\\
+Diese Anleitung dient dem Aufbau sowie dem Einsatz eines einfachen Roboters in einem KURSKURSKURS. Bei diesem Roboter werden zwei Motoren mithilfe eines \textsc{Raspberry-Pi}-Einplatinencomputers angesteuert, um einen Stift über ein  Papierblatt zu bewegen. Die Geschwindigkeit beider Motoren kann dabei durch einfache Programmierbefehle eingestellt werden.\\
+
+Die ursprüngliche Idee des Projektes stammt \href{https://tuduu.org/projekt/automatischer-malroboter}{hierher}\footnote[1]{https://tuduu.org/projekt/automatischer-malroboter}. Da kein \textsc{Calliope} im Filbüro vorhanden war, wurde dieses Projekt auf einem \textsc{Raspberry Pi} umgesetzt, was einige Zwischenschritte erforderte.\\
 
 \subsection{Ziel}
 Das Projekt soll den Kursteilnehmern die Möglichkeiten der Programmierung einfacher Elektronik nahebringen.
@@ -87,12 +127,16 @@ Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbau
 \subsubsection{Werkzeuge}
 \begin{checklist}
     \item Heißklebepistole
-    \item Schere
+    \item Schere / Teppichmesser
+    \item evtl. Abisolierzange
 \end{checklist}
 
 \subsubsection{Material}
 \begin{checklist}
     \item RaspberryPi
+    \item Bildschirm + HDMI-Kabel
+    \item Maus
+    \item Tastatur
     \item Zahnstocher
     \item Motoren
     \item Treiber
@@ -100,7 +144,11 @@ Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbau
     \item Kabel
     \item Räder
     \item Klammern
+    \item 4-AA-Batteriefach
+    \item 4 AA Batterien
     \item Unterlage (Telefonbuch / Karton)
+    \item X Female-Female Jumperkabel
+    \item 1x Female-Male Jumperkabel
 \end{checklist}
 
 
@@ -114,27 +162,60 @@ Vorkenntnisse über Python sind nicht zwingend notwendig!
 \subsubsection{Script}
 Zur Vorbereitung sollten einige Funktionalitäten innerhalb von Python eingebaut werden, welche die Verwendung bei der Kursdurchführung für die Kursteilnehmer erleichtern. Die Nachfolgenden Programme sollten vorbereitet werden.\\
 
+Führen Sie folgende Schritte durch, sofern die genannten Ordner und Dateien nicht bereits vorhanden sind:\\
+
 \schritt{1}{Legen Sie einen Projektordner an}{
 
-  Legen Sie auf dem Desktop des Raspberry Pi einen neuen Ordner an und nennen Sie ihn \emph{Malroboter} (sofern nicht bereits vorhanden).\\
+  Legen Sie auf dem Desktop des Raspberry Pi einen neuen Ordner an und nennen Sie ihn \emph{Malroboter}.\\
 
 }
 
-\schritt{2}{Erstellen Sie eine neue Datei}{
+\schritt{2}{Erstellen Sie zwei neue Dateien}{
 
-  Erstellen Sie im Ordner Malroboter eine neue Datei \emph{motorsteuerung.py} (sofern nicht bereits vorhanden).\\
+  Erstellen Sie im Ordner Malroboter die folgenden Dateien:
+  \begin{itemize}
+  \item \emph{motorsteuerung.py}: Diese Datei dient der Übersetzung der bestehenden Funktionen und der Definitionen innerhalb des Projektes und wird i.d.R. nicht von den Kursteilnehmern verwendet.
+  \item \emph{kurs.py}: Diese Datei soll dann von den Kursteilnehmern programmiert werden, hier wird z.B. die Geschwindigkeit der Motoren eingestellt. 
+  \end{itemize}
+
 
 }
 
-\schritt{3}{Fügen Sie den folgenden}{2}
+\schritt{3}{Fügen Sie das Steuerungsprogramm ein}{
 
+ Fügen Sie den folgenden Programmtext in die Datei \emph{motorsteuerung.py} ein:\\
+  \indent \hinweis Sie finden die Programmdateien auch \href{https://www.github.com/latenighticecream/malroboter/Malroboter}{hier}\footnote[2]{https://www.github.com/latenighticecream/malroboter/Malroboter}.\\
 
-\schritt{4}{Einbinden des Programms}{3}
+}
+
+\emph{motorsteuerung.py}\\
+\lstinputlisting{Malroboter/motorsteuerung.py}
+\vspace{\baselineskip}
+
+\schritt{4}{Binden Sie das Steuerungsprogramm ein}{
+Öffnen Sie die Datei \emph{kurs.py} und fügen sie den folgenden Programmtext ein:
+\lstinputlisting{Malroboter/kurs.py}
+}
 
 
 \section{Durchführung}
 
 \subsection{Bau des Roboterarmes}
+\schritt{1}{Den Roboterarm vorbereiten}{
+Die Pappe schneidet ihr in sechs 30cm lange und 2cm breite Streifen.
+Zwei davon werden auf 15cm gekürzt, zwei weitere auf 12cm.\\
+
+Aus den Resten der gekürzten Streifen schneidet ihr zirka 12 kleine Pappquadrate.
+Außerdem benötigt ihr vier Pappteile, die ihr wie auf dem Bild zuschneidet, und zwei Pappkreise, deren Durchmesser mit der Größe der Reifen übereinstimmt.\\
+}
+
+
+\schritt{2}{Den Roboterarm bauen}{
+Die Pappstreifen werden jetzt zusammengeklebt.
+Dafür klebt ihr die jeweils beiden gleichlangen Streifen mit Heißkleber zusammen, sodass ihr nun ein 30cm, ein 15cm und ein 12cm Pappstück habt. 
+Die vier Pappteile klebt ihr übereinander zu einem Klotz. An diesem können später die Stifte befestigt werden.\\
+}
+
 
 \subsection{Verbindung mit RaspberryPi}
 
@@ -148,6 +229,8 @@ Zur Vorbereitung sollten einige Funktionalitäten innerhalb von Python eingebaut
 
 \section{Projektvariation}
 je nach Altersklasse
+
+\section{Problembehandlung}
 
 
 \end{document}
