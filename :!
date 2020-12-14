@@ -35,12 +35,12 @@ Dann verklebt die Zahnstocher zum Schluss oben und unten mit einem Tropfen Heiß
 Die Pappkreise klebt ihr so auf die Reifen, dass die Pappstreifen oben auf liegen.\\
 
 }
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=5cm]{pappstucke.jpg}
-\caption*{Stifte}
+\includegraphics[width=5cm]{arm.jpg}
+\caption*{Der fertige Roboterarm sollte sich leicht bewegen lassen.}
 \end{figure}
-
 
 
 \subsection{Verbindung mit RaspberryPi}
