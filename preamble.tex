@@ -1,0 +1,109 @@
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{enumitem, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[scaled=1]{inconsolata}
+\usepackage[T1]{fontenc}
+\usepackage{subfig}
+
+\graphicspath{{./graphics/}}
+
+\newlist{checklist}{itemize}{2}
+\setlist[checklist]{label=$\square$}
+
+\usepackage{titling}
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    \vskip0.5em}%
+}
+
+\definecolor{commentColor}{HTML}{adb5bd}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{stringColor}{HTML}{7048e8}
+\definecolor{keywordColor}{HTML}{228be6}
+\definecolor{backgroundColor}{HTML}{f8f9fa}
+\definecolor{borderColor}{HTML}{f1f3f5}
+\definecolor{inlineTextColor}{HTML}{495057}
+\definecolor{linkcolor}{HTML}{228be6}
+\definecolor{yelluw0}{HTML}{ffec99}
+\definecolor{yelluw}{HTML}{ffe066}
+\definecolor{yelluw2}{HTML}{fab005}
+\definecolor{yelluw3}{HTML}{f08c00}
+\definecolor{limeu}{HTML}{d8f5a2}
+
+\lstset{
+  backgroundcolor=\color{backgroundColor},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\ttfamily,        % the size of the fonts that are used for the code
+  breaklines=true,                 % sets automatic line breaking
+  commentstyle=\color{commentColor},    % comment style
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1000,                % start line enumeration with line 1000
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{keywordColor}\textbf,       % keyword style
+  language=Python,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{borderColor},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{stringColor},     % string literal style
+  tabsize=2
+}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=yelluw3,
+    urlcolor=yelluw3
+}
+
+\geometry{
+  a4paper,
+  left=33mm,
+  right=33mm,
+  top=20mm
+}
+
+\definecolor{mordantred19}{rgb}{0.68, 0.05, 0.0}
+
+\newcommand{\solution}{\textcolor{mordantred19}{Solution:}}
+
+\newcommand{\hinweis}{\textcolor{stringColor}{! Hinweis: }}
+
+\let\oldemph\emph
+\renewcommand{\emph}[1]{\textbf{\oldemph{#1}}}
+
+%\let\oldsection\section
+%\renewcommand{\section}[1]{
+%  \begin{center}
+%  \oldsection{#1}
+%  \hrule
+%  \end{center}
+%}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\schritt}[3]{
+\begin{tcolorbox}
+  \textbf{Schritt #1: #2}
+\end{tcolorbox}
+#3
+}
+
+\tcbset{
+  colback=yelluw0,
+  colframe=yelluw0
+}
