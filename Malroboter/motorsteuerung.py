@@ -1,43 +1,48 @@
-from gpiozero import Motor
+import gpiozero
 
-motor1 = Motor(4, 14)
-motor2 = Motor(17, 27)
+motorA_IN1 = gpiozero.DigitalOutputDevice(20)
+motorA_IN2 = gpiozero.DigitalOutputDevice(16)
 
-# Dies sind nur Umschreibungen der ursprünglichen Funktionen,
-# um sie zu übersetzen und verständlicher zu machen
-# (hoffentlich)
-def motorRechts (motor, geschwindigkeit):
-    if geschwindigkeit <= 100:
-        motor.forward(geschwindigkeit / 100)
+motorB_IN1 = gpiozero.DigitalOutputDevice(19)
+motorB_IN2 = gpiozero.DigitalOutputDevice(4)
 
-def motorLinks (motor, geschwindigkeit):
-    if geschwindigkeit <= 100:
-        motor.forward(geschwindigkeit / 100)
+motorA_EN = gpiozero.PWMOutputDevice(12)
+motorB_EN = gpiozero.PWMOutputDevice(13)
 
-def motorUmdrehen (motor):
-    motor.reverse()
+motorA_EN.frequency = 10000
+motorB_EN.frequency = 10000
 
 
-# Setzt Geschwindigkeit zwischen 0 und 100 %
-def motor1Links (geschwindigkeit = 50):
-    motorLinks(motor1, geschwindigkeit)
+# Funktionen, um die Programmierung für die Kursteilnehmer zu erleichtern
+# Die Geschwindigkeitsangaben sind in %
+def motorA_an ():
+    motorA_EN.on()
 
-def motor1Rechts (geschwindigkeit = 50):
-    motorRechts(motor1, geschwindigkeit)
+def motorA_off ():
+    motorA_EN.off()
 
-def motor1Umdrehen ():
-    motorUmdrehen (motor1)
+def motorA_rechts (geschwindigkeit = 10):
+    motorA_EN.value = geschwindigkeit / 100
+    motorA_IN1.on()
+    motorA_IN2.off()
 
-def motor1Stop ():
+def motorA_links (geschwindigkeit = 10):
+    motorA_EN.value = geschwindigkeit / 100
+    motorA_IN1.off()
+    motorA_IN2.on()
 
-def motor2Links (geschwindigkeit = 50):
-    motorLinks(motor2, geschwindigkeit)
+def motorB_an ():
+    motorB_EN.on()
 
-def motor2Rechts (geschwindigkeit = 50):
-    motorRechts(motor2, geschwindigkeit)
+def motorB_off ():
+    motorB_EN.off()
 
-def motor2Umdrehen ():
-    motorUmdrehen (motor2)
+def motorB_rechts (geschwindigkeit = 10):
+    motorB_EN.value = geschwindigkeit / 100
+    motorB_IN1.on()
+    motorB_IN2.off()
 
-def motor2Stop ():
-    motor2.stop()
+def motorB_links (geschwindigkeit = 10):
+    motorB_EN.value = geschwindigkeit / 100
+    motorB_IN1.off()
+    motorB_IN2.on()
