@@ -17,6 +17,7 @@
    (TeX-run-style-hooks
     "babel"
     "inputenc"
+    "booktabs"
     "enumitem"
     "amssymb"
     "geometry"
