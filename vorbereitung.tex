@@ -1,46 +1,38 @@
 \section{Kurzbeschreibung}
-Diese Anleitung dient dem Aufbau sowie dem Einsatz eines einfachen Roboters in einem KURSKURSKURS. Bei diesem Roboter werden zwei Motoren mithilfe eines \textsc{Raspberry-Pi}-Einplatinencomputers angesteuert, um einen Stift über ein  Papierblatt zu bewegen. Die Geschwindigkeit beider Motoren kann dabei durch einfache Programmierbefehle eingestellt werden.\\
+Diese Anleitung beschreibt den Aufbau und das Vorgehen zum Bau eures ganz eigenen Malroboters. 
+Dabei werden zwei Motoren mithilfe eines \textsc{Raspberry-Pi}-Einplatinencomputers angesteuert, um einen Stift über ein Blatt Papier zu bewegen. Die Geschwindigkeit der Motoren kann über einfache Programmierbefehle eingestellt und verändert werden.\\
 
-Die ursprüngliche Idee des Projektes stammt \href{https://tuduu.org/projekt/automatischer-malroboter}{hierher}\footnote[1]{https://tuduu.org/projekt/automatischer-malroboter}. Da kein \textsc{Calliope} im Filbüro vorhanden war, wurde dieses Projekt auf einem \textsc{Raspberry Pi} umgesetzt, was einige Zwischenschritte erforderte.\\
+Die ursprüngliche Idee des Projektes stammt \href{https://tuduu.org/projekt/automatischer-malroboter}{hierher}\footnote[1]{https://tuduu.org/projekt/automatischer-malroboter}. Da nicht jeder einen \textsc{Calliope} zur Hand hat, wurde dieses Projekt auf einem \textsc{Raspberry Pi} umgesetzt, was zwar einige Zwischenschritte erfordert, aber mindestens genauso leicht funktioniert.\\
 
 \subsection{Ziel}
-Das Projekt soll den Kursteilnehmern die Möglichkeiten der Programmierung einfacher Elektronik nahebringen.
+Mithilfe des Projektes steigen KursteilnehmerInnen auf einfache und spielerische Art und Weise in die Welt der Programmierung einfacher Elektronik ein.\\
 
 \section{Vorbereitung}
-Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbaus im Vornherein erledigt werden, z.B. die Verdrahtung der Motoren (später beschrieben).\\
+Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbaus vor Projektbeginn erledigt werden, z.B. die Verdrahtung der Motoren (siehe Kapitel) oder das Zurechtschneiden der benötigten Pappteile.\\
+
+
+\subsection{Materialien}
 
 \begin{figure}[h]
 \centering
 \parbox{5cm}{
-\includegraphics[width=5cm]{stift.jpg}
-\caption*{Stifte}
+\includegraphics[width=5cm]{kleber.jpg}
+\caption*{Heißklebepistole}
 }
 \qquad
 \begin{minipage}{5cm}
-\includegraphics[width=5cm]{klammer.jpg}
-\caption*{Klammer}
+\includegraphics[width=5cm]{messer.jpg}
+\caption*{Cuttermesser}
 \end{minipage}
 \end{figure}
 
-\begin{figure}[h]
-\centering
-\parbox{5cm}{
-\includegraphics[width=5cm]{stift.jpg}
-\caption*{Stifte}s
-}
-\hfill
-\begin{minipage}{5cm}
-\includegraphics[width=5cm]{mango.jpg}
-\caption*{Mango 2}
-\end{minipage}
-\end{figure}
-
-\subsection{Materialien}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Werkzeuge}
 \begin{checklist}
     \item Heißklebepistole
     \item Schere / Teppichmesser
+    \item Schraubendreher
 
     \begin{checklist}
     \item[] Optional:
@@ -50,6 +42,85 @@ Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbau
 \end{checklist}
 
 \subsubsection{Material}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[h]
+\centering
+\parbox{5cm}{
+\includegraphics[width=5cm]{batteriefach.jpg}
+\caption*{Batterienfach}
+}
+\qquad
+\begin{minipage}{5cm}
+\includegraphics[width=5cm]{kabel ff.jpg}
+\caption*{Cuttermesser}
+\end{minipage}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[h]
+\centering
+\parbox{5cm}{
+\includegraphics[width=5cm]{kabel male female.jpg}
+\caption*{Stifte}
+}
+\qquad
+\begin{minipage}{5cm}
+\includegraphics[width=5cm]{klammer.jpg}
+\caption*{Klammer}
+\end{minipage}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[h]
+\centering
+\parbox{5cm}{
+\includegraphics[width=5cm]{karton.jpg}
+\caption*{Karton oder ein dickes Buch}
+}
+\qquad
+\begin{minipage}{5cm}
+\includegraphics[width=5cm]{klammer.jpg}
+\caption*{Maulklammer}
+\end{minipage}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[h]
+\centering
+\parbox{5cm}{
+\includegraphics[width=5cm]{motoren.jpg}
+\caption*{Motoren}
+}
+\qquad
+\begin{minipage}{5cm}
+\includegraphics[width=5cm]{pappe.jpg}
+\caption*{Stück Pappe für den Arm}
+\end{minipage}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[h]
+\centering
+\parbox{5cm}{
+\includegraphics[width=5cm]{treiber.jpg}
+\caption*{Motortreiber - Erweiterung für den Raspberry Pi}
+}
+\qquad
+\begin{minipage}{5cm}
+\includegraphics[width=5cm]{räder.jpg}
+\caption*{Räder}
+\end{minipage}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \begin{checklist}
     \item RaspberryPi
     \item Bildschirm + HDMI-Kabel
