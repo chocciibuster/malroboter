@@ -12,7 +12,7 @@ Mit diesem Projekt soll den TeilnehmerInnen ein leichter Einstieg in die Program
 \section{Vorbereitung}
 Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbaus vor Projektbeginn erledigt werden, z.B. die Verdrahtung der Motoren (siehe Anhang).\\
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \parbox{5cm}{
 \includegraphics[width=5cm]{stift.jpg}
@@ -20,8 +20,6 @@ Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbau
 }
 \hfill
 \begin{minipage}{5cm}
-\includegraphics[width=5cm]{mango.jpg}
-\caption*{Mango 2}
 \end{minipage}
 \end{figure}
 
@@ -29,7 +27,7 @@ Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbau
 
 \subsubsection{Werkzeuge}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \parbox{5cm}{
 \includegraphics[width=5cm]{kleber.jpg}
@@ -37,14 +35,14 @@ Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbau
 }
 \qquad
 \begin{minipage}{5cm}
-\includegraphics[width=5cm]{scheere.jpg}
+\includegraphics[width=5cm]{scheere.png}
 \caption*{Schere}
 \end{minipage}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \parbox{5cm}{
 \includegraphics[width=5cm]{messer.jpg}
@@ -72,7 +70,7 @@ Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbau
 \subsubsection{Material}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \parbox{5cm}{
 \includegraphics[width=5cm]{zahnstocher.jpg}
@@ -87,7 +85,7 @@ Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbau
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \parbox{5cm}{
 \includegraphics[width=5cm]{treiber.jpg}
@@ -102,7 +100,7 @@ Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbau
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \parbox{5cm}{
 \includegraphics[width=5cm]{räder.jpg}
@@ -117,7 +115,7 @@ Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbau
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \parbox{5cm}{
 \includegraphics[width=5cm]{karton.jpg}
@@ -125,23 +123,23 @@ Je nach Durchführung sowie verfügbarer Zeit sollten einige Schritte des Aufbau
 }
 \qquad
 \begin{minipage}{5cm}
-\includegraphics[width=5cm]{kabel ff.jpg}
+\includegraphics[width=5cm]{kabel_ff.jpg}
 \caption*{Female-Female Jumperkabel}
 \end{minipage}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \parbox{5cm}{
-\includegraphics[width=5cm]{kabel male female.jpg}
-\caption*{Stifte}
+\includegraphics[width=5cm]{kabel_male_female.jpg}
+\caption*{Female-Male Jumperkabel}
 }
 \qquad
 \begin{minipage}{5cm}
-\includegraphics[width=5cm]{netzteil_close.jpg}
-\caption*{Verbindungsstück von Netzteil und Adapter}
+\includegraphics[width=5cm]{adapter1.jpg}
+\caption*{Ein Adapter um, das 12V Netzteil an den Treiber anzuschließen}
 \end{minipage}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -179,5 +177,8 @@ Auf dem Raspberry Pi im Filmbüro sollten diese Dateien bereits vorhanden sein. 
 
 
 \subsection{Motoren}
+Die direkte Verbindung der Motoren mit dem Raspberry Pi ist nicht möglich, da der maximal zulässige Strom von dessen Pins zu niedrig ist und sie insbesondere nicht zum Schalten induktiver Lasten, wie Motoren, geeignet sind. Um also eine Beschädigung zu verhindern und eine zuverlässige Funktion zu gewährleisten, muss ein Motortreiber eingesetzt werden, hierfür wird der Schaltkreis L298N verwendet.\\
+
+
 Sollten die Motoren noch nicht mit Kabeln versehen sein, gibt es auch hierfür eine Anleitung im Anhang der Dokumentation.\\
 Dieser Schritt lässt sich auch sehr gut mit den KursteilnehmerInnen durchführen!
